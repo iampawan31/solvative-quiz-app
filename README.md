@@ -1,4 +1,4 @@
-# Solvative Quzz App
+# Solvative Quiz App
 
 Steps to start the application on local server
 
