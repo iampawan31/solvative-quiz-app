@@ -1,10 +1,17 @@
-import './App.css'
+import AppHeader from './components/AppHeader'
+import WelcomePage from './components/WelcomeCard'
 
-function App() {
+const App = () => {
   return (
-    <>
-      <div className="">Solvative</div>
-    </>
+    <div className="text-secondary bg-alternate min-h-screen h-full">
+      {/* App Header */}
+      <AppHeader />
+
+      {/* App Content */}
+      <div className="container mx-auto ">
+        <WelcomePage />
+      </div>
+    </div>
   )
 }
 
