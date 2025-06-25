@@ -6,3 +6,17 @@
   --color-alternate: #f3f3e9;
   --color-accent: #d9d9d94d;
 }
+
+/* Firefox */
+progress::-moz-progress-bar {
+  background-color: var(--color-primary);
+}
+
+/* WebKit (Chrome, Safari, Edge) */
+progress::-webkit-progress-bar {
+  background-color: var(--color-primary);
+}
+
+progress::-webkit-progress-value {
+  background-color: var(--color-primary);
+}

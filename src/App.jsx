@@ -1,8 +1,9 @@
 import { useState } from 'react'
+import { ToastContainer, toast } from 'react-toastify'
 import AppHeader from './components/AppHeader'
-import WelcomeCard from './components/WelcomeCard'
 import QuizCard from './components/QuizCard'
 import ResultCard from './components/ResultCard'
+import WelcomeCard from './components/WelcomeCard'
 
 const App = () => {
   const [fullName, setFullName] = useState('')
@@ -23,21 +24,24 @@ const App = () => {
   const handleQuizCompleted = (finalScore, finalResults) => {
     setScore(finalScore)
     setResults(finalResults)
+    setCurrentStep('result')
   }
 
   const handleRetakeQuiz = () => {
-    setCurrentStep('')
+    setCurrentStep('category')
     setSelectedCategory('')
     setScore(0)
     setResults({
       correct: 0,
+      incorrect: 0,
       unanswered: 0
     })
   }
 
   const handleStartQuiz = () => {
     if (!selectedCategory) {
-      alert('Please select a category before starting the quiz')
+      toast.error('Please select a category before starting the quiz')
+      return
     }
     setCurrentStep('take-quiz')
   }
@@ -81,6 +85,7 @@ const App = () => {
           />
         )}
       </div>
+      <ToastContainer />
     </div>
   )
 }

@@ -1,7 +1,8 @@
-import appLogo from '../assets/appLogo.svg'
-import QuizRules from './QuizRules'
 import { useState } from 'react'
+import { toast } from 'react-toastify'
+import appLogo from '../assets/appLogo.svg'
 import { categories } from '../data/categories'
+import QuizRules from './QuizRules'
 
 const WelcomePage = ({
   fullName,
@@ -18,7 +19,7 @@ const WelcomePage = ({
 
   const handleStartQuiz = () => {
     if (!fullName) {
-      alert('Please enter your name')
+      toast.error('Please enter your name')
       return
     }
 
@@ -31,15 +32,15 @@ const WelcomePage = ({
   }
   return (
     <div className="pt-10 mx-auto max-w-2xl">
-      <div className="flex justify-center text-center text-6xl mb-8">
-        Welcome to
+      <div className="flex items-center justify-center text-center text-3xl md:text-6xl mb-8">
+        <div className="">Welcome to</div>
         <img
-          className="ml-4 h-14"
+          className="ml-2 h-5 md:h-14"
           src={appLogo}
           alt="QuizMania"
         />
       </div>
-      <div className="mx-auto w-2xl bg-accent rounded px-4 py-4 mb-8">
+      <div className="mx-auto w-sm sm:w-md md:w-2xl bg-accent rounded px-4 py-4 mb-8">
         Please read all the rules about this quiz before you start.
         <a
           href="#"
@@ -50,7 +51,7 @@ const WelcomePage = ({
         </a>
       </div>
 
-      <div className="flex flex-col items-start">
+      <div className="px-4 md:px-0 flex flex-col items-start">
         <div className="w-full mb-8">
           <div className="text-xl mb-2">Full name</div>
           <input
@@ -65,7 +66,7 @@ const WelcomePage = ({
 
         <div className="w-full mb-4">
           <div className="mb-2">Please select topic to continue</div>
-          <div className="grid grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {categories &&
               categories.map((category, index) => (
                 <div

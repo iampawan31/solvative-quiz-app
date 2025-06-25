@@ -1,5 +1,5 @@
 const sampleQuestions = {
-  'java-script-basics': [
+  'javascript-basics': [
     {
       question: 'What is the output of 2 + "2" in JavaScript?',
       options: ['4', '22', 'NaN', 'undefined'],

@@ -1,7 +1,7 @@
 import { FaCircleCheck, FaFaceSadTear } from 'react-icons/fa6'
 import { isPositiveResult } from '../utils/helpers'
 
-const ResultCard = ({ score, results, retakeQuiz }) => {
+const ResultCard = ({ score, results, onRetakeQuiz }) => {
   const { correct, incorrect, unanswered } = results
 
   const totalScore = correct + unanswered + (score - correct)
@@ -38,7 +38,7 @@ const ResultCard = ({ score, results, retakeQuiz }) => {
       <div className="">
         <button
           className="border-primary text-primary px-8 py-2 rounded"
-          onClick={retakeQuiz}
+          onClick={onRetakeQuiz}
         >
           Retake Quiz
         </button>
