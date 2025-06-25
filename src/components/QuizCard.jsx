@@ -31,9 +31,10 @@ const QuizCard = ({ selectedCategory, onQuizCompleted }) => {
       setSelectedOption(null)
       setTimer(10)
     } else {
-      onQuizCompleted(correctCount, {
+      onQuizCompleted({
         correct: correctCount,
         incorrect: incorrectCount,
+        totalQuestions: questions.length,
         unanswered:
           selectedOption === null && !questionTimedOut
             ? unansweredQuestions + 1
@@ -43,10 +44,9 @@ const QuizCard = ({ selectedCategory, onQuizCompleted }) => {
   }
 
   const handleOptionSelected = (option) => {
-    // if (selectedOption !== null) {
-    //   toast.error('Option already selected')
-    //   return
-    // }
+    if (selectedOption !== null) {
+      return
+    }
 
     setSelectedOption(option)
     if (option === questions[currentQuestionIndex].answer) {
@@ -77,11 +77,16 @@ const QuizCard = ({ selectedCategory, onQuizCompleted }) => {
           <div className="">{`0:${timer}`}</div>
         </div>
         <div>
-          <progress
-            className="w-full"
-            value={currentQuestionIndex + 1}
-            max={questions.length}
-          />
+          <div className="w-full bg-gray-200 h-4 overflow-hidden">
+            <div
+              className="bg-primary h-full transition-all"
+              style={{
+                width: `${
+                  ((currentQuestionIndex + 1) / questions.length) * 100
+                }%`
+              }} // dynamically update based on progress
+            ></div>
+          </div>
         </div>
         <div className="flex text-xl md:text-3xl font-semibold">
           <div className="">{currentQuestionIndex + 1}.</div>
@@ -121,7 +126,7 @@ const QuizCard = ({ selectedCategory, onQuizCompleted }) => {
             className="bg-primary text-white rounded px-8 py-2 cursor-pointer"
             onClick={handleNextQuestion}
           >
-            Next
+            {currentQuestionIndex + 1 === questions.length ? 'Finish' : 'Next'}
           </button>
           <button
             className="border-primary border text-primary rounded px-8 py-2 cursor-pointer"

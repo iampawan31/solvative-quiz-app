@@ -21,7 +21,7 @@ const AppHeader = ({ currentStep, fullName, onExitQuiz }) => {
             )}
 
             {currentStep === 'result' && (
-              <div className="">
+              <div className="flex items-center gap-2">
                 <div className="flex bg-black text-white justify-center items-center rounded-full w-10 h-10">
                   {fullName[0]}
                 </div>

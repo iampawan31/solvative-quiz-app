@@ -21,8 +21,8 @@ const App = () => {
     setSelectedCategory(category)
   }
 
-  const handleQuizCompleted = (finalScore, finalResults) => {
-    setScore(finalScore)
+  const handleQuizCompleted = (finalResults) => {
+    setScore(finalResults.correct)
     setResults(finalResults)
     setCurrentStep('result')
   }
@@ -34,7 +34,8 @@ const App = () => {
     setResults({
       correct: 0,
       incorrect: 0,
-      unanswered: 0
+      unanswered: 0,
+      totalQuestions: 0
     })
   }
 
